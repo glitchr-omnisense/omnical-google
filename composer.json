@@ -1,0 +1,34 @@
+{
+    "name": "omnical/google",
+    "type": "library",
+    "description": "Reserved, not released yet: Google Calendar for omnisense/omnical.",
+    "keywords": [
+        "omnical",
+        "google",
+        "reserved"
+    ],
+    "homepage": "https://github.com/glitchr-omnisense/omnical-google",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Marco Meyer",
+            "email": "marco.meyer@glitchr.io"
+        }
+    ],
+    "require": {
+        "php": ">=8.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Omnical\\Google\\": ""
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-1.x": "1.x-dev"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
