@@ -1,0 +1,45 @@
+{
+    "$schema": "https://github.com/glitchr-omnisense/contracts/blob/1.x/resources/usage-policy.schema.json",
+    "provider": "google",
+    "rateLimits": [
+        {
+            "max": 10000,
+            "window": "minute",
+            "scope": "application",
+            "note": "Calendar API: 10,000 requests a minute per Google Cloud project (sliding window), since 2026-05-01; projects that used the API between November 2025 and April 2026 keep their former quotas. Over it Google answers 403 or 429 (usageLimits: rateLimitExceeded)."
+        },
+        {
+            "max": 600,
+            "window": "minute",
+            "scope": "user",
+            "note": "600 requests a minute per user per project (sliding window): 403 userRateLimitExceeded over it. Count it per user: Registry::calendarEvents($name, $user)."
+        },
+        {
+            "max": 1000000,
+            "window": "day",
+            "scope": "application",
+            "note": "1,000,000 requests a day per project is the threshold before charges apply and cannot be raised; Google announced charges beyond it for later in 2026, with 90 days' notice at least."
+        }
+    ],
+    "rights": {
+        "commercial": "allowed",
+        "openSourceRequired": false,
+        "caching": {"permission": "unknown", "maxTtl": null},
+        "storage": "allowed",
+        "redistribution": "forbidden",
+        "attribution": {"required": false, "text": null, "url": null, "where": []},
+        "licence": null
+    },
+    "requirements": {
+        "key": true,
+        "userAgent": {"required": false, "pattern": null}
+    },
+    "provenance": {
+        "terms": "https://developers.google.com/terms",
+        "policy": "https://developers.google.com/workspace/calendar/api/guides/quota",
+        "verifiedAt": "2026-11-10",
+        "declaredBy": "maintainer",
+        "contact": "https://developers.google.com/workspace/calendar/api/support",
+        "notes": "Commercial use is not forbidden by the Google APIs Terms of Service; no sublicensing, no substitute for the API, no circumventing the limits. Caching is left unknown: the terms forbid keeping API content beyond what its cache headers allow (§5(e)), while a user's own events are user data under the Google API Services User Data Policy, which sets no time to live. Storage is allowed for the user-facing feature the user consented to, under Limited Use (https://developers.google.com/terms/api-services-user-data-policy): secured in transit and at rest, no transfer but the listed exceptions, no human reading without the user's agreement, no ads; deleted when the terms end (§8(b)). Redistribution is forbidden (no sublicensing, no transfer of user data). No attribution is required; the branding rules apply: say \"for\" or \"compatible with\" Google Calendar with a trademark notice, never use the mark as the site's name or logo. Calendar scopes are sensitive: an external app needs Google's verification (a privacy policy, a home page, a verified domain, a justification per scope, a demo video); an unverified app is capped at 100 new users, and an app in Testing status gets refresh tokens that last 7 days. A refresh token also dies unused for 6 months, when the user revokes access, or past 100 per account per client."
+    }
+}

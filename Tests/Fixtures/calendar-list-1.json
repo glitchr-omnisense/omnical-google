@@ -1,0 +1,30 @@
+{
+  "kind": "calendar#calendarList",
+  "etag": "\"p32g9nb5bt6fva0g\"",
+  "nextPageToken": "page-2",
+  "items": [
+    {
+      "kind": "calendar#calendarListEntry",
+      "etag": "\"1731234567000000\"",
+      "id": "fr.french#holiday@group.v.calendar.google.com",
+      "summary": "Jours fériés en France",
+      "timeZone": "Europe/Paris",
+      "colorId": "8",
+      "backgroundColor": "#16a765",
+      "foregroundColor": "#000000",
+      "accessRole": "reader",
+      "defaultReminders": []
+    },
+    {
+      "kind": "calendar#calendarListEntry",
+      "etag": "\"1731234567000001\"",
+      "id": "c_0a1b2c3d4e@group.calendar.google.com",
+      "summary": "Cabinet",
+      "summaryOverride": "Cabinet (partagé)",
+      "description": "Les rendez-vous du cabinet",
+      "timeZone": "Europe/Paris",
+      "backgroundColor": "#9fe1e7",
+      "accessRole": "writer"
+    }
+  ]
+}

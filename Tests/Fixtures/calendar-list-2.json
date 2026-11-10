@@ -1,0 +1,24 @@
+{
+  "kind": "calendar#calendarList",
+  "etag": "\"p32g9nb5bt6fva0h\"",
+  "nextSyncToken": "CPDAlvWDx70CEPDAlvWDx70CGAU=",
+  "items": [
+    {
+      "kind": "calendar#calendarListEntry",
+      "etag": "\"1731234567000002\"",
+      "id": "anna.martin@example.org",
+      "summary": "anna.martin@example.org",
+      "timeZone": "Europe/Paris",
+      "backgroundColor": "#9a9cff",
+      "accessRole": "owner",
+      "primary": true
+    },
+    {
+      "kind": "calendar#calendarListEntry",
+      "id": "gone@group.calendar.google.com",
+      "summary": "Deleted",
+      "accessRole": "owner",
+      "deleted": true
+    }
+  ]
+}

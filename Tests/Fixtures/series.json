@@ -1,0 +1,27 @@
+{
+  "kind": "calendar#events",
+  "timeZone": "Europe/Paris",
+  "items": [
+    {
+      "kind": "calendar#event",
+      "etag": "\"3456789012345010\"",
+      "id": "q2kfo1k4bs0n6n3p1vqgpq0kd0",
+      "status": "confirmed",
+      "summary": "Point hebdomadaire",
+      "start": {"dateTime": "2026-11-02T14:00:00+01:00", "timeZone": "Europe/Paris"},
+      "end": {"dateTime": "2026-11-02T14:30:00+01:00", "timeZone": "Europe/Paris"},
+      "recurrence": ["RRULE:FREQ=WEEKLY;BYDAY=MO;UNTIL=20261221T225959Z", "EXDATE;TZID=Europe/Paris:20261123T140000"],
+      "iCalUID": "q2kfo1k4bs0n6n3p1vqgpq0kd0@google.com"
+    },
+    {
+      "kind": "calendar#event",
+      "etag": "\"3456789012345011\"",
+      "id": "0ab1cd2ef3",
+      "status": "confirmed",
+      "summary": "Inventaire",
+      "start": {"date": "2026-10-30"},
+      "end": {"date": "2026-10-31"},
+      "recurrence": ["RRULE:FREQ=YEARLY;BYMONTH=10;BYMONTHDAY=30", "EXDATE;VALUE=DATE:20271030"]
+    }
+  ]
+}

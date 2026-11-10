@@ -1,0 +1,46 @@
+{
+  "kind": "calendar#events",
+  "summary": "anna.martin@example.org",
+  "timeZone": "Europe/Paris",
+  "nextPageToken": "events-page-2",
+  "items": [
+    {
+      "kind": "calendar#event",
+      "etag": "\"3456789012345000\"",
+      "id": "7cbh8rpc10lrc0ckih9tafss99",
+      "status": "confirmed",
+      "htmlLink": "https://www.google.com/calendar/event?eid=N2NiaDhycGMxMGxyYzBja2loOXRhZnNzOTkgYW5uYQ",
+      "created": "2026-11-02T09:12:44.000Z",
+      "updated": "2026-11-03T10:01:02.512Z",
+      "summary": "Consultation - M. Durand",
+      "description": "Premier rendez-vous",
+      "location": "12 rue des Arts, Strasbourg",
+      "organizer": {"email": "anna.martin@example.org", "displayName": "Anna Martin", "self": true},
+      "creator": {"email": "anna.martin@example.org", "self": true},
+      "start": {"dateTime": "2026-11-16T09:00:00+01:00", "timeZone": "Europe/Paris"},
+      "end": {"dateTime": "2026-11-16T09:45:00+01:00", "timeZone": "Europe/Paris"},
+      "iCalUID": "7cbh8rpc10lrc0ckih9tafss99@google.com",
+      "sequence": 0,
+      "attendees": [
+        {"email": "anna.martin@example.org", "displayName": "Anna Martin", "organizer": true, "self": true, "responseStatus": "accepted"},
+        {"email": "Paul.Durand@example.com", "displayName": "Paul Durand", "responseStatus": "tentative"},
+        {"email": "c_188a@resource.calendar.google.com", "displayName": "Salle 2", "resource": true, "responseStatus": "accepted"},
+        {"email": "assistant@example.org", "optional": true, "responseStatus": "needsAction"}
+      ],
+      "eventType": "default"
+    },
+    {
+      "kind": "calendar#event",
+      "etag": "\"3456789012345001\"",
+      "id": "q2kfo1k4bs0n6n3p1vqgpq0kd0_20261116T130000Z",
+      "status": "confirmed",
+      "summary": "Point hebdomadaire",
+      "start": {"dateTime": "2026-11-16T14:00:00+01:00", "timeZone": "Europe/Paris"},
+      "end": {"dateTime": "2026-11-16T14:30:00+01:00", "timeZone": "Europe/Paris"},
+      "recurringEventId": "q2kfo1k4bs0n6n3p1vqgpq0kd0",
+      "originalStartTime": {"dateTime": "2026-11-16T14:00:00+01:00", "timeZone": "Europe/Paris"},
+      "transparency": "opaque",
+      "iCalUID": "q2kfo1k4bs0n6n3p1vqgpq0kd0@google.com"
+    }
+  ]
+}

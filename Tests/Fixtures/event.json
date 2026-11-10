@@ -1,0 +1,15 @@
+{
+  "kind": "calendar#event",
+  "etag": "\"3456789012399000\"",
+  "id": "n4c0s3r7e0d2026a",
+  "status": "confirmed",
+  "htmlLink": "https://www.google.com/calendar/event?eid=bjRjMHMzcjdlMGQyMDI2YQ",
+  "created": "2026-11-10T08:00:00.000Z",
+  "updated": "2026-11-10T08:00:00.120Z",
+  "summary": "Consultation",
+  "organizer": {"email": "anna.martin@example.org", "self": true},
+  "start": {"dateTime": "2026-11-20T10:00:00+01:00", "timeZone": "Europe/Paris"},
+  "end": {"dateTime": "2026-11-20T10:30:00+01:00", "timeZone": "Europe/Paris"},
+  "iCalUID": "n4c0s3r7e0d2026a@google.com",
+  "attendees": [{"email": "paul.durand@example.com", "responseStatus": "needsAction"}]
+}

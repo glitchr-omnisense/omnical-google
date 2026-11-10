@@ -1,0 +1,17 @@
+{
+  "kind": "calendar#freeBusy",
+  "timeMin": "2026-11-16T07:00:00.000Z",
+  "timeMax": "2026-11-16T17:00:00.000Z",
+  "calendars": {
+    "anna.martin@example.org": {
+      "busy": [
+        {"start": "2026-11-16T08:00:00Z", "end": "2026-11-16T08:45:00Z"},
+        {"start": "2026-11-16T13:00:00Z", "end": "2026-11-16T13:30:00Z"}
+      ]
+    },
+    "paul.durand@example.com": {
+      "errors": [{"domain": "global", "reason": "notFound"}],
+      "busy": []
+    }
+  }
+}

@@ -1,0 +1,12 @@
+# PHPStan at the highest level, as glitchr-studio/ci's workflow runs it. phpstan-baseline.neon is
+# empty: nothing is accepted, the CI fails on any error.
+includes:
+    - phpstan-baseline.neon
+
+parameters:
+    level: max
+    paths:
+        - .
+    excludePaths:
+        - vendor (?)
+        - docker (?)

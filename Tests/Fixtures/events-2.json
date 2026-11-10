@@ -1,0 +1,26 @@
+{
+  "kind": "calendar#events",
+  "timeZone": "Europe/Paris",
+  "nextSyncToken": "CKjZvfWDx70CEKjZvfWDx70CGAU=",
+  "items": [
+    {
+      "kind": "calendar#event",
+      "etag": "\"3456789012345002\"",
+      "id": "4m2b5ltq3m3de6gd3m6dpk9s5c",
+      "status": "confirmed",
+      "summary": "Fermeture du cabinet",
+      "transparency": "transparent",
+      "start": {"date": "2026-11-17"},
+      "end": {"date": "2026-11-19"},
+      "iCalUID": "4m2b5ltq3m3de6gd3m6dpk9s5c@google.com"
+    },
+    {
+      "kind": "calendar#event",
+      "etag": "\"3456789012345003\"",
+      "id": "q2kfo1k4bs0n6n3p1vqgpq0kd0_20261123T130000Z",
+      "status": "cancelled",
+      "recurringEventId": "q2kfo1k4bs0n6n3p1vqgpq0kd0",
+      "originalStartTime": {"dateTime": "2026-11-23T14:00:00+01:00", "timeZone": "Europe/Paris"}
+    }
+  ]
+}
