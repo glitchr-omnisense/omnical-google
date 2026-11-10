@@ -26,6 +26,7 @@ use Omnical\Model\FreeBusyStatus;
 use Omnical\Model\ParticipationStatus;
 use Omnical\Model\Recurrence;
 use Omnical\Model\Transparency;
+use Omnisense\Contracts\Policy\Backoff;
 use Omnisense\Contracts\Policy\DeclaresUsagePolicyInterface;
 use Omnisense\Contracts\Policy\UsagePolicy;
 
@@ -40,7 +41,9 @@ use Omnisense\Contracts\Policy\UsagePolicy;
  *
  * Every request carries the user's bearer token; a 401 refreshes it once
  * and asks again. A 403 rateLimitExceeded or userRateLimitExceeded (Google's
- * way of saying 429 too) is a UsageLimitReachedException. Its usage policy
+ * way of saying 429 too) is a UsageLimitReachedException; given the
+ * provider's Backoff, it holds the next calls for HOLD seconds (no
+ * Retry-After comes with it). Its usage policy
  * is policy.json, beside this class (POLICY).
  */
 final class GoogleProvider implements CalendarEventsInterface, FreeBusyInterface, DeclaresUsagePolicyInterface
@@ -52,6 +55,9 @@ final class GoogleProvider implements CalendarEventsInterface, FreeBusyInterface
 
     private const PAGE = 2500;
 
+    /** The wait after a 403 rate limit: Google sends no Retry-After, and its limits are per minute. */
+    public const HOLD = 60;
+
     private static ?UsagePolicy $policy = null;
 
     public function __construct(
@@ -60,6 +66,7 @@ final class GoogleProvider implements CalendarEventsInterface, FreeBusyInterface
         private readonly AccessTokenInterface $token,
         private readonly string $baseUri = self::BASE_URI,
         private readonly string $sendUpdates = 'none',
+        private readonly ?Backoff $backoff = null,
     ) {
     }
 
@@ -338,7 +345,9 @@ final class GoogleProvider implements CalendarEventsInterface, FreeBusyInterface
             }
         } catch (ProviderException $e) {
             if (403 === $e->status() && preg_match('~\b(rateLimitExceeded|userRateLimitExceeded)\b~', $e->getMessage(), $m)) {
-                throw new UsageLimitReachedException(\sprintf('Google Calendar answered 403 %s: slow down (Google asks for an exponential backoff).', $m[1]), null, 'google', null, $e);
+                $reason = \sprintf('Google Calendar answered 403 %s: slow down (Google asks for an exponential backoff)', $m[1]);
+                // Given the provider's Backoff, the next calls wait too, as after a 429's Retry-After.
+                throw null !== $this->backoff ? $this->backoff->hold(self::HOLD, $reason) : new UsageLimitReachedException($reason.'.', null, 'google', null, $e);
             }
             throw $e;
         }

@@ -7,6 +7,7 @@ use Omnical\Auth\InMemoryTokenStore;
 use Omnical\Auth\OAuthToken;
 use Omnical\Exception\UsageLimitReachedException;
 use Omnical\Google\GoogleFactory;
+use Omnical\Google\GoogleProvider;
 use Omnical\Registry;
 use Omnical\Testing\RecordedHttpClient;
 use Omnisense\Contracts\Policy\InvalidPolicyException;
@@ -47,6 +48,27 @@ final class PolicyTest extends TestCase
         }
         self::assertCount(3, $http->requests, 'the refused call reached nothing');
         self::assertSame(1, $registry->guard('agenda')->remaining('calendars', ['user' => 'user-7']));
+    }
+
+    public function testA403RateLimitHoldsTheNextCalls(): void
+    {
+        // Google's way of saying 429, without a Retry-After: the provider's Backoff holds it, so the next call waits too.
+        $http = RecordedHttpClient::routes(['~calendarList~' => [403, '{"error":{"code":403,"errors":[{"domain":"usageLimits","reason":"rateLimitExceeded"}]}}']]);
+        $registry = self::registry($http, []);
+        try {
+            $registry->calendarEvents('agenda', 'user-42')->calendars();
+            self::fail('A rate limit was read as calendars.');
+        } catch (UsageLimitReachedException $e) {
+            self::assertSame(GoogleProvider::HOLD, $e->retryAfter);
+            self::assertStringStartsWith('Google Calendar answered 403 rateLimitExceeded', $e->getMessage());
+        }
+        try {
+            $registry->calendarEvents('agenda', 'user-7')->calendars();
+            self::fail('The next call went out during the wait.');
+        } catch (UsageLimitReachedException $e) {
+            self::assertGreaterThanOrEqual(GoogleProvider::HOLD - 1, $e->retryAfter);
+        }
+        self::assertCount(1, $http->requests, 'the held call reached nothing');
     }
 
     public function testASiteCannotRaiseGooglesShare(): void

@@ -228,7 +228,7 @@ final class GoogleProviderTest extends TestCase
             self::fail('A rate limit was read as calendars.');
         } catch (OmnicalException $e) {
             self::assertInstanceOf(UsageLimitReachedException::class, $e);
-            self::assertSame('Google Calendar answered 403 userRateLimitExceeded: slow down (Google asks for an exponential backoff).', $e->getMessage());
+            self::assertSame('Google Calendar answered 403 userRateLimitExceeded: slow down (Google asks for an exponential backoff): try again in 60 s.', $e->getMessage());
         }
     }
 

@@ -138,6 +138,7 @@ final class GoogleFactory extends ProviderFactory
             $this->token($c, $http),
             $base,
             $updates,
+            $backoff,
         );
     }
 

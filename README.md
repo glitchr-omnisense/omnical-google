@@ -108,7 +108,9 @@ and the [Google APIs Terms of Service](https://developers.google.com/terms):
 - storage allowed for the feature the user consented to, under Limited Use.
 
 A 403 `rateLimitExceeded` or `userRateLimitExceeded` is a `UsageLimitReachedException` (Google says
-it means the same as a 429, with no `Retry-After`: back off exponentially).
+it means the same as a 429, with no `Retry-After`: back off exponentially). Given the provider's
+Backoff (the registry gives it), it holds every call for `GoogleProvider::HOLD` seconds (60), as a
+429's `Retry-After` does.
 
 ## Verified, and not
 
