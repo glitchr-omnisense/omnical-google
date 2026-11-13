@@ -1,6 +1,10 @@
 # Changelog
 
-## 1.x
+## [Unreleased]
+
+## [1.0.0] - 2026-11-13
+
+The first stable version. It requires `omnisense/contracts` `^1.0`, `omnisense/omnical` `^1.0` with no stability flag, so `composer require omnical/google` installs it in a project with Composer's default minimum-stability; the 1.x series follows semantic versioning. A tag `vX.Y.Z` is released by `.github/workflows/release.yml` once the package's CI passes on it.
 
 - On omnisense/contracts' round 2 (5bac28b or later, still `^1.0@dev`): a 403 rateLimitExceeded
   or userRateLimitExceeded goes through the provider's Backoff (`Backoff::hold()`, GoogleProvider::HOLD,
